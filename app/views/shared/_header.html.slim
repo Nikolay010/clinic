@@ -1,0 +1,13 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top.navbar-expand-md
+  .container-fluid
+    = link_to 'Clinic', root_path, class: 'navbar-brand'
+    button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse.d-flex.justify-content-end
+      .d-flex.align-items-center.flex-md-row.flex-column
+        ul.navbar-nav
+          li.nav-item
+            = link_to 'Doctors', class: 'nav-link'
+          li.nav-item
+            / = link_to 'Patients', patients_path,  class: 'nav-link'
+          = render 'users/manage'
