@@ -44,12 +44,15 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
+
 gem "devise", "~> 4.8"
 gem "slim-rails", "~> 3.5"
+gem "bootstrap", "~> 5.1"
+gem "simple_form", "~> 5.1"
+gem "cancancan", "~> 3.4"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -75,10 +78,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "database_cleaner"
 end
-
-
-
-
-
-gem "bootstrap", "~> 5.1"

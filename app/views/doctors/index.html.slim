@@ -1,0 +1,25 @@
+- content_for(:title) do
+  .h2 = controller_name.humanize
+
+- content_for(:button) do
+  = link_to "New category", new_category_path, class: 'btn btn-outline-primary'
+  = link_to "New doctor", new_doctor_path, class: 'btn btn-outline-primary ms-2'
+
+table.table.table-bordered
+  thead
+    tr
+      th scope="col"  #
+      th scope="col"  First name
+      th scope="col"  Last name
+      th scope="col"  Email
+      th scope="col"  Phone
+      th scope="col"  Category
+  tbody
+    - @doctors.each do |doctor|
+      tr
+        th scope="row"  1
+        td = doctor.first_name
+        td = doctor.last_name
+        td = doctor.email
+        td = doctor.phone
+        td = doctor.category.name

@@ -1,0 +1,10 @@
+- content_for(:title) do
+  .h2 = controller_name.humanize
+
+.row
+  .col-2
+    = simple_form_for @category do |f|
+      = f.input :name
+      .col-auto.mt-2
+        = f.button :submit, class: 'btn btn-success'
+        = link_to 'Cancel', :back, class: 'btn btn-danger ms-2'

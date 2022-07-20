@@ -8,11 +8,14 @@ html
       = stylesheet_link_tag "application", "data-turbo-track": "reload"
       = javascript_importmap_tags
   body
-    .header
-      / - if user_signed_in?
-      = render 'shared/header'
-      / - else
-      /   = render 'shared/before_signed'
-      = render 'shared/alert'
-    .main
-      = yield
+    .container
+      .header
+        = render 'shared/header'
+        = render 'shared/alert'
+      .main
+        .row.mt-2
+          .col
+            = yield :title
+          .col.text-end
+            = yield :button
+        = yield

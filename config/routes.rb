@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :patients
+  resources :appointments
   resources :doctors
+  resources :categories
 
 end

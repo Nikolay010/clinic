@@ -3,18 +3,6 @@ li.nav-item.dropdown
     span User
   ul.dropdown-menu aria-labelledby="navbarDropdownMenuLink"
     .li
-      = link_to 'Sign in', new_patient_session_path, class: 'dropdown_item btn'
+      = link_to 'Sign in', new_patient_session_path, class: 'nav-link'
     .li
-      = button_to 'Sign out', destroy_patient_session_path, class: 'dropdown_item'
-/ - else
-/   li.nav-item.dropdown
-/     a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" role="button"
-/       span Login
-/     ul.dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-/       .li
-/         = link_to 'Sign up', new_patient_registration_path, class: 'dropdown_item btn'
-/       .li
-/         = link_to 'login', new_patient_session_path, class: 'dropdown_item'
-/       .li
-/         = button_to 'Sign out', destroy_patient_session_path, class: 'dropdown_item'
-
+      = link_to 'Sign out', destroy_patient_session_path, method: :delete, class: 'nav-link'

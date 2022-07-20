@@ -1,0 +1,21 @@
+- content_for(:title) do
+  .h2 = controller_name.humanize
+
+table.table.table-bordered
+  thead
+    tr
+      th scope='col' #
+      th scope='col' Title
+      th scope='col' Description
+      th scope='col' Meeting time
+      th scope='col' Patient
+      th scope='col' Doctor
+  tbody
+    - @appointments.each do |appointment|
+      tr
+        th scope='row' 1
+        td = appointment.title
+        td = appointment.description
+        td = appointment.meeting_time
+        td = appointment.patient.email
+        td = appointment.doctor.category.name

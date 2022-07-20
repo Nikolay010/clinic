@@ -1,0 +1,15 @@
+- content_for(:title) do
+  .h2 = controller_name.humanize
+
+= simple_form_for @doctor do |f|
+  .row.row-cols-3
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :phone
+    = f.input :email
+    = f.input :encrypted_password
+    = f.association :category, selected: ''
+    .row.mt-2
+      .col-auto
+        = f.button :submit, class: 'btn btn-success'
+        = link_to 'Cancel', :back, class: 'btn btn-danger ms-2'
