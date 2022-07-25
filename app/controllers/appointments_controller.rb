@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :destroy]
 
   def index
-    @appointments = Appointment.accessible_by(current_ability, :read)
+    @appointments = Appointment.all
   end
 
   def new
