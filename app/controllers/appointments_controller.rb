@@ -1,12 +1,14 @@
 class AppointmentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_appointment, only: [:show, :destroy]
 
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.accessible_by(current_ability, :read)
   end
 
   def new
     @appointment = Appointment.new
+    authorize! :read, @appointments
   end
 
   def create
@@ -20,7 +22,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment.title && @appointment.description
+    authorize! :read, @appointments
   end
 
   def destroy

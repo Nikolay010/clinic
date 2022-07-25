@@ -1,12 +1,15 @@
 class CategoriesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_categories, only: [:show]
 
   def index
     @categories = Category.all
+    authorize! :read, @categories
   end
 
   def new
     @category = Category.new
+    authorize! :create, @category
   end
 
   def create
@@ -17,6 +20,8 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
+
+    authorize! :create, @category
   end
 
   def show

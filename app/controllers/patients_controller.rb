@@ -1,23 +1,12 @@
 class PatientsController < ApplicationController
-  before_action :set_pacient, only: %i(show destroy)
+  before_action :set_pacient, only: %i[show destroy]
 
   def index
-    @patients = current_user.patients.all
-  end
-
-  def new
-  end
-
-  def create
-
+    @patients = Patient.all
   end
 
   def show
-
-  end
-
-  def destroy
-
+    @patient.phone
   end
 
   private

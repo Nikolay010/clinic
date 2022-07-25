@@ -1,15 +1,30 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top.navbar-expand-md
   .container-fluid
-    = link_to 'Clinic', root_path, class: 'navbar-brand'
-    button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button"
+    = link_to root_path, class: 'navbar-brand' do
+      span.fw-bold Clinic
+    button.navbar-toggler aria-controls="navbarNavDropdown" data-bs-target="#navbarNavDropdown"
       span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse.d-flex.justify-content-end
       .d-flex.align-items-center.flex-md-row.flex-column
         .ul.navbar-nav
-          .li.nav-item
-            = link_to 'Doctors', doctors_path, class: 'nav-link'
-          .li.nav-item
-            = link_to 'Patients', patients_path,  class: 'nav-link'
-          .li.nav-item
-            = link_to 'Appointments', appointments_path, class: 'nav-link'
-          = render 'users/manage'
+          - if current_patient
+            .li.nav-item
+              = link_to 'Doctors', doctors_path, class: 'nav-link'
+            - if can? :read, @patients
+              .li.nav-item
+                = link_to 'Patients', patients_path,  class: 'nav-link'
+            .li.nav-item
+              = link_to 'Appointments', appointments_path, class: 'nav-link'
+            .li.nav-item.dropdown
+              a#navbarDropdownMenuLink.nav-link.dropdown-toggle data-bs-toggle="dropdown"
+                span User
+              ul.dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+                .li
+                  = link_to 'Sign in', new_patient_session_path, class: 'nav-link btn-outline-secondary'
+                .li
+                  = button_to 'Sign out', destroy_patient_session_path, method: :delete, class: 'nav-link btn-outline-secondary'
+          - else
+            .li
+              = link_to 'Sign in', new_patient_session_path, class: 'nav-link'
+            .li
+              = button_to 'Sign out', destroy_patient_session_path, method: :delete, class: 'nav-link'

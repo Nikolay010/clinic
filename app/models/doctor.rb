@@ -5,4 +5,8 @@ class Doctor < ApplicationRecord
   has_many :patients, through: :appointments
 
   validates :phone, presence: true, uniqueness: true
+
+  def ability
+    @ability ||= Ability.new(self)
+  end
 end

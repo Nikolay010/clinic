@@ -4,16 +4,12 @@ class Patient < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :appointments
+  has_many :appointments, class_name: 'Appointment'
   has_many :doctors, through: :appointments
 
   validates :phone, presence: true, uniqueness: true
 
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
+  def ability
+    @ability ||= Ability.new(self)
   end
 end
